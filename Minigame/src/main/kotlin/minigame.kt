@@ -12,10 +12,11 @@ fun challengeOne(){
 
     if(options.contains(enteredString)){
         when (enteredString) {
-            "shoot" ->gameOver("shoot")
-            "pass" ->gameOver("pass")
-            "drive" ->succes()
+            "shoot" ->gameOver("You call a screen. Davis sets the screen perfectly, you get an open look... Miss! You lost the game. Try again!")
+            "pass" ->gameOver("You drive to the right and spot Lebron James open on the left side of the rimb. He goes for the dunk but bam, blocked! You lose the game.")
+            "drive" ->succes("You take on your defender one v one. A quick behind the back cross-over and your defender is behind you. You shoot the floater and score in the last minute. You win!")
         }
+        challengeTwo()
     }else{
         println("You didn't enter a correct option. Try again!")
         challengeOne()
@@ -35,18 +36,35 @@ fun challengeTwo(){
     }else{
         println("Unfortunately, to result was a $diceResult so you are not right!")
     }
+
+
+    challengeThree()
 }
 
 fun gameOver(option: String){
-    when (option){
-        "shoot" -> println("You call a screen. Davis sets the screen perfectly, you get an open look... Miss! You lost the game. Try again!")
-        "pass" -> println("You drive to the right and spot Lebron James open on the left side of the rimb. He goes for the dunk but bam, blocked! You lose the game.")
-    }
-
-    challengeTwo()
+    println(option)
+    println("Try again!")
 }
 
-fun succes(){
-    println("You take on your defender one v one. A quick behind the back cross-over and your defender is behind you. You shoot the floater and score in the last minute. You win!")
-    challengeTwo()
+fun succes(option: String){
+    println(option)
+    ("Good game")
+
+}
+fun challengeThree(){
+    println("==========================")
+    println("Welcome to the last challenge! You have to pick a weapon in order to survive.")
+    println("Sword, knife or hockystick, what is your weapon?")
+    val weapon = readLine()
+    if(weapon=="sword"){
+        gameOver("You're opponent also took a sword with him and outskilled you. Defeat!")
+
+    }else if(weapon=="knife"){
+        println("You took a knife to a swordfight! You fled the battle, and returned to the previous challenge")
+        challengeTwo()
+    }else{
+
+        succes("You're opponent was startled that you came with a hockeystick. You won the battle easily!")
+    }
+
 }
