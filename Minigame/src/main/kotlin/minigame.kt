@@ -5,7 +5,7 @@ fun main(){
     challengeOne();
 }
 
-fun challengeOne(){
+fun challengeOne()  {
     val options = listOf("shoot", "pass", "drive")
     println("Do you pass, shoot or drive it?")
     val enteredString= readLine()
