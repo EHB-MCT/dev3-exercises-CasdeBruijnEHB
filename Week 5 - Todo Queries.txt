@@ -1,0 +1,30 @@
+Week 5 - TODO Queries First batch
+-1956 Porsche 356A Coupe (SELECT productName from products where productCode="S24_3856"
+)
+-54.395182 ( SELECT avg(buyPrice) as average from products )
+-15 (SELECT COUNT(productName) from products WHERE productName LIKE "%Ford%")
+- Harley Davidson Ultimate CHopper (SELECT productName, max(buyPrice) as maxprice from product)
+- 9 (SELECT COUNT(productLine) as 'Aantal ships' from products where productLine="ships")
+
+Week 5 - TODO Queries Second batch
+- 3 SELECT COUNT(orderNumber) as 'Aantal Orders' from orders where customerNumber="328"
+- 3 (SELECT COUNT(orders.customerNumber) as 'Orders Julie', customers.contactLastName, customers.contactFirstName  from customers LEFT JOIN orders ON customers.customerNumber= orders.customerNumber where customers.contactFirstName="JULIE" AND customers.contactLastName="YOUNG")
+- 1 (SELECT count(customerName) as "Aantal klanten USA" from customers WHERE country="usa" and creditLimit="0")
+- collectable mini designs (SELECT customers.customerName,customers.customerNumber, customers.contactFirstName, customers.contactLastName,  sum(amount)/count(customers.customerNumber) as "average"
+from customers left join payments on payments.customerNumber=customers.customerNumber 
+group by customers.customerNumber order by average desc limit 1;)
+
+Week 5 - Todo queries third batch
+- 38281.51 (select customers.contactLastName, customers.contactFirstName, sum(payments.amount), payments.paymentDate from customers left join payments on payments.customerNumber = customers.customerNumber
+where (customers.contactFirstName="William" and customers.contactLastName="Brown") and payments.paymentDate BETWEEN '2004-01-01' AND '2004-12-31'
+order by customers.contactFirstName)
+- select customers.contactLastName, customers.contactFirstName, employees.firstName from customers LEFT JOIN employees on customers.salesRepEmployeeNumber = employeeNumber
+where customers.salesRepEmployeeNumber IS NOT NULL
+- select customers.customerName, employees.employeeNumber, offices.officeCode, offices.city 
+from employees 
+left join offices on employees.officeCode = offices.officeCode
+left join customers on customers.salesRepEmployeeNumber = employees.employeeNumber
+where customers.customerName="The Sharp Gifts Warehouse"
+
+
+
